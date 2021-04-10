@@ -1,8 +1,75 @@
 <html>
 <head>
     <title>Retrieve data</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399"></script>
 </head>
+
 <body>
+  <nav class="sidebar">
+    <div class="text">Police100</div>
+<ul>
+<li class="active"><a href="#">Dashboard</a></li>
+<li>
+        <a href="#" class="feat-btn"> Stat
+          <span class="fas fa-caret-down first"></span>
+        </a>
+        
+</li>
+<li>
+        <a href="#" class="serv-btn">Panic Cases
+          <span class="fas fa-caret-down second"></span>
+        </a>
+       
+</li>
+<li><a href="#">Complain Box</a></li>
+<li><a href="#">Upload Wanted/Dead Unknown Body/Missing Case</a></li>
+<li><a href="#">Help Other Cases</a></li>
+<li><a href="#">Feedback</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div id="div1">
+  <table id="t1">
+      <tr>
+          <th> Name </th>
+          <th> Country</th>
+          <th> Aadhar</th>
+          <th> Age </th>
+          <th> Gender </th>
+          <th>Action</th>
+          </tr>
+          <tr>
+              <td>Komal</td>
+              <td>India</td>
+              <td>Addhar No</td>
+              <td> 21 </td>
+              <td>Female</td>
+              <td><button>Assign</button></td>
+              </tr>
+      </table>
+  </div>
+  </div>
+<script>
+  $('.btn').click(function(){
+    $(this).toggleClass("click");
+    $('.sidebar').toggleClass("show");
+  });
+    $('.feat-btn').click(function(){
+      $('nav ul .feat-show').toggleClass("show");
+      $('nav ul .first').toggleClass("rotate");
+    });
+    $('.serv-btn').click(function(){
+      $('nav ul .serv-show').toggleClass("show1");
+      $('nav ul .second').toggleClass("rotate");
+    });
+    $('nav ul li').click(function(){
+      $(this).addClass("active").siblings().removeClass("active");
+    });
+  </script>
+  <!--
 <center>
     <h2>Enter name of user to get information</h2>
     <input type="text" id="user" required="required"><br>
@@ -13,18 +80,12 @@
     <p>Gender: <strong id="gender"></strong></p>
     <p>Country: <strong id="country"></strong></p>
 </center>
-<p>
-    <button onclick="myFunction()">Try it</button>
-
-    <ol id="UserList">
-
-    </ol>
-    </p>
+-->
 
 
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
 
@@ -61,12 +122,58 @@ function goData(data){
         var k=keys[i];
         var name=scores[k].name;
         var country=scores[k].country;
+        var aadhar=scores[k].aadhar;
+        var age=scores[k].age;
+        var gender=scores[k].gender;
+
         console.log(name,country);
 
-       var li= document.createElement('li',name+" : "+country);
-        //li.parent('UserList');
-        li.innerHTML = name;
-        document.body.appendChild(li); 
+       //var li= document.createElement('li');
+       var tr=document.createElement('tr');
+var td1=document.createElement('td');
+
+
+td1.innerHTML=name;
+//document.body.appendChild(td1);
+
+var element = document.getElementById("t1");
+element.appendChild(tr);
+element.appendChild(td1);
+
+
+
+
+
+
+var td2=document.createElement('td');
+td2.innerHTML=country;
+element.appendChild(td2);
+
+
+var td3=document.createElement('td');
+td3.innerHTML=aadhar;
+element.appendChild(td3);
+
+var td4=document.createElement('td');
+td4.innerHTML=age;
+element.appendChild(td4);
+
+var td5=document.createElement('td');
+td5.innerHTML=gender;
+element.appendChild(td5);
+
+var td6=document.createElement('button');
+td6.innerHTML="Assign";
+element.appendChild(td6);
+
+      //  li.parent('UserList');
+    //    li.innerHTML = name;
+
+      //  var li1= document.createElement('li');
+        //li1.innerHTML=country;
+        //li.innerHTML = country;
+        //document.body.appendChild(li); 
+       // document.body.appendChild(li1); 
     }
 
 }
@@ -74,11 +181,12 @@ function errData(err){
     console.log('Error!');
     console.log(err);
 }
+/*
 function myFunction() {
   var btn = document.createElement("BUTTON");
   btn.innerHTML = "CLICK ME";
   document.body.appendChild(btn);
-}
+}*/
 </script>
 <script type="text/javascript" src="Read.js"></script>
 </body>
